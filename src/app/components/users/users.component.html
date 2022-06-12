@@ -1,0 +1,9 @@
+<div class="container d-flex  flex-col justify-content-center align-items-center mt-5 card p-5 pt-0">
+  <h3 class="py-5">User List</h3>
+  <div class="row">
+    <app-user *ngFor="let u of users"
+      class="col"
+      [user]="u"
+      (delete)="onDelete($event)"></app-user>
+  </div>
+</div>
