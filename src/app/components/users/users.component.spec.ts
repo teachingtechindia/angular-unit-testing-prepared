@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UsersService } from 'src/app/services/users.service';
@@ -19,6 +20,8 @@ fdescribe('UsersComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UsersComponent],
       schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientModule],
+      providers: [{ provide: UsersService, useClass: UsersService }],
     }).compileComponents();
   });
 
