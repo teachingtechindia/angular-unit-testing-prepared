@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface UserModel {
@@ -11,7 +12,7 @@ export interface UserModel {
 export class UsersService {
   users: UserModel[] = [];
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   addNewUser(user: UserModel) {
     this.users.push(user);
