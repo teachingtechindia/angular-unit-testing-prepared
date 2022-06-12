@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, Input, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserModel, UsersService } from 'src/app/services/users.service';
 
@@ -24,12 +24,20 @@ class MockUsersService {
 }
 
 fdescribe('UsersComponent', () => {
+  @Component({
+    selector: 'app-user',
+    template: `<div></div>`,
+  })
+  class FakeUserComponent {
+    @Input() user!: UserModel;
+  }
+
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
   let mockUsersService = beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UsersComponent],
-      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [UsersComponent, FakeUserComponent],
+      // schemas: [NO_ERRORS_SCHEMA],
       imports: [HttpClientModule],
       providers: [{ provide: UsersService, useClass: mockUsersService }],
     }).compileComponents();
