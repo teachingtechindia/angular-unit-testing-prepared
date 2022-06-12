@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { UserComponent } from './user.component';
 
@@ -34,5 +35,9 @@ fdescribe('UserComponent', () => {
     expect(fixture.nativeElement.querySelector('h4').textContent).toEqual(
       'Vivek'
     );
+
+    expect(
+      fixture.debugElement.query(By.css('h4')).nativeElement.textContent
+    ).toContain('Vivek');
   });
 });
