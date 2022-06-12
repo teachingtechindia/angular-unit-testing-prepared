@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 
 import { UserComponent } from './user.component';
 
-fdescribe('UserComponent', () => {
+describe('UserComponent', () => {
   let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
 
