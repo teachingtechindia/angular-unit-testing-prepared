@@ -60,4 +60,10 @@ fdescribe('UsersComponent', () => {
     console.log(fixture.debugElement.queryAll(By.css('app-user')));
     expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
   });
+
+  it('should query all the 3 app-user element from DOM - by using alternate approach', () => {
+    fixture.detectChanges();
+    console.log(fixture.debugElement.queryAll(By.directive(UsersComponent)));
+    expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
+  });
 });
