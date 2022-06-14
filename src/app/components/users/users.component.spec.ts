@@ -24,7 +24,7 @@ class MockUsersService {
   }
 }
 
-fdescribe('UsersComponent', () => {
+describe('UsersComponent', () => {
   @Component({
     selector: 'app-user',
     template: `<div></div>`,
