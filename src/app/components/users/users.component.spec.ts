@@ -58,19 +58,32 @@ fdescribe('UsersComponent', () => {
 
   it('should query all the 3 app-user element from DOM', () => {
     fixture.detectChanges();
-    console.log(fixture.debugElement.queryAll(By.css('app-user')));
+    // console.log(fixture.debugElement.queryAll(By.css('app-user')));
     expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
   });
 
   it('should query all the 3 app-user element from DOM - by using alternate approach', () => {
     fixture.detectChanges();
-    console.log(fixture.debugElement.queryAll(By.directive(UsersComponent)));
+    // console.log(fixture.debugElement.queryAll(By.directive(UsersComponent)));
     expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
   });
 
   it('should delete all users', () => {
     expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
+
     fixture.debugElement.query(By.css('#delete-all-btn')).nativeElement.click();
+
+    fixture.detectChanges();
+    expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(0);
+  });
+
+  it('should delete all users - Apporach II', () => {
+    expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
+
+    fixture.debugElement
+      .query(By.css('#delete-all-btn'))
+      .triggerEventHandler('click', { stopPropagation: () => {} });
+
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(0);
   });
