@@ -22,4 +22,8 @@ export class UsersComponent implements OnInit {
     this.usersService.removeUser(user);
     this.users = this.usersService.users;
   }
+
+  deleteAllUsers() {
+    this.users = [];
+  }
 }

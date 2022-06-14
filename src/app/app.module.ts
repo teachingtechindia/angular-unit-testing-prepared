@@ -7,9 +7,10 @@ import { ResultPipe } from './pipes/result.pipe';
 import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './components/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, ResultPipe, UsersComponent, UserComponent],
+  declarations: [AppComponent, ResultPipe, UsersComponent, UserComponent, UserDetailComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

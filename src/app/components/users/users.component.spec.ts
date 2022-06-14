@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { UserModel, UsersService } from 'src/app/services/users.service';
 
 import { UsersComponent } from './users.component';
@@ -24,7 +25,7 @@ class MockUsersService {
   }
 }
 
-describe('UsersComponent', () => {
+fdescribe('UsersComponent', () => {
   @Component({
     selector: 'app-user',
     template: `<div></div>`,
@@ -39,7 +40,7 @@ describe('UsersComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UsersComponent, FakeUserComponent],
       // schemas: [NO_ERRORS_SCHEMA],
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, RouterModule],
       providers: [{ provide: UsersService, useClass: mockUsersService }],
     }).compileComponents();
   });
@@ -65,5 +66,12 @@ describe('UsersComponent', () => {
     fixture.detectChanges();
     console.log(fixture.debugElement.queryAll(By.directive(UsersComponent)));
     expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
+  });
+
+  it('should delete all users', () => {
+    expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(3);
+    fixture.debugElement.query(By.css('#delete-all-btn')).nativeElement.click();
+    fixture.detectChanges();
+    expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(0);
   });
 });
