@@ -1,6 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { UserModel, UsersService } from 'src/app/services/users.service';
@@ -102,7 +108,7 @@ describe('UsersComponent', () => {
     }, 2000);
   });
 
-  it('should add a user to users array asynchronously', (done) => {
+  xit('should add a user to users array asynchronously', (done) => {
     expect(component.users.length).toEqual(3);
     component.addUserAsync();
     setTimeout(() => {
@@ -110,4 +116,12 @@ describe('UsersComponent', () => {
       done();
     }, 2000);
   });
+
+  it('should add a user to users array asynchronously', fakeAsync(() => {
+    expect(component.users.length).toEqual(3);
+    component.addUserAsync();
+    // tick(2000);
+    flush();
+    expect(component.users.length).toEqual(4);
+  }));
 });
