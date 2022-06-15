@@ -4,7 +4,7 @@
     <button class="btn btn-danger mr-5 d-block"
       (click)="onDeleteCLick()">Delete User {{user?.id}}</button>
     <button class="btn btn-success"
-      [routerLink]="['/users', user.id]"
-      [queryParams]="{name: user.name }">Show Details</button>
+      [routerLink]="['/users', user?.id]"
+      [queryParams]="{name: user?.name }">Show Details</button>
   </div>
 </div>

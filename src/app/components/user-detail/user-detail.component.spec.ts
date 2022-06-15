@@ -1,16 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 import { UserDetailComponent } from './user-detail.component';
 
 describe('UserDetailComponent', () => {
   let component: UserDetailComponent;
   let fixture: ComponentFixture<UserDetailComponent>;
+  let mockAactivatedRoute;
 
   beforeEach(async () => {
+    mockAactivatedRoute = {
+      params: of({}),
+      queryParams: of({}),
+    };
+
     await TestBed.configureTestingModule({
-      declarations: [ UserDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [UserDetailComponent],
+      providers: [{ provide: ActivatedRoute, useValue: mockAactivatedRoute }],
+    }).compileComponents();
   });
 
   beforeEach(() => {
