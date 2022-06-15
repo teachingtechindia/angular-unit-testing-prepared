@@ -8,6 +8,7 @@ import { UserModel, UsersService } from 'src/app/services/users.service';
 })
 export class UsersComponent implements OnInit {
   users: UserModel[] = [];
+
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
@@ -25,5 +26,11 @@ export class UsersComponent implements OnInit {
 
   deleteAllUsers() {
     this.users = [];
+  }
+
+  addUserAsync() {
+    setTimeout(() => {
+      this.users.push({ id: 4, name: 'Raj' });
+    }, 1000);
   }
 }

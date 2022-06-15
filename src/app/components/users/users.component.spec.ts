@@ -87,4 +87,27 @@ describe('UsersComponent', () => {
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(By.css('app-user')).length).toEqual(0);
   });
+
+  xit('should add a user to users array asynchronously', () => {
+    expect(component.users.length).toEqual(3);
+    component.addUserAsync();
+    expect(component.users.length).toEqual(4);
+  });
+
+  xit('should add a user to users array asynchronously', () => {
+    expect(component.users.length).toEqual(3);
+    component.addUserAsync();
+    setTimeout(() => {
+      expect(component.users.length).toEqual(4);
+    }, 2000);
+  });
+
+  it('should add a user to users array asynchronously', (done) => {
+    expect(component.users.length).toEqual(3);
+    component.addUserAsync();
+    setTimeout(() => {
+      expect(component.users.length).toEqual(4);
+      done();
+    }, 2000);
+  });
 });
